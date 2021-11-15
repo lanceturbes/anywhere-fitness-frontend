@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const initailFormValues = {
     name: '',
     type: false,
-    startTime: false,
+    startTime: '',
     duration: false,
     intensityLevel: false,
     location: '',
@@ -14,9 +14,11 @@ const initailFormValues = {
 function CreateClass(props) {
 
     const [createdClass, setCreatedClass] = useState(initailFormValues);
+    const {name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize} = createdClass;
 
     const onChange = (evt) => {
         // work in progress
+        setCreatedClass({ ...createdClass, [evt.target.name]: evt.target.value})
     };
     const onSubmit = (evt) => {
         // Work in progress
@@ -26,71 +28,92 @@ function CreateClass(props) {
     return (
         <div>
             <h2>Create Your Class</h2>
-            <form id='class-form-container'>
+            <form id='class-form-container' onSubmit={onSubmit}>
                 <label>Instructor Name
                     <input
-                        // value={name}
+                        value={name}
                         onChange={onChange}
                         name='name'
                         type='text' />
                 </label>
-                <label>Class Type
+                <br/>
+                <label>Fitness Category
                     <select
                         onChange={onChange}
-                        // value={type}
+                        value={type}
                         name='type'
                     >
-                        <option>Select a Class Type</option>
+                        <option>Select your Category</option>
+                        <option>Endurance</option>
+                        <option>Flexibility</option>
+                        <option>Balance</option>
+                        <option>Strength</option>
+                        <option>Meditation</option>
                     </select>
                 </label>
+                <br/>
                 <label>Start Time
-                    <select
-                        onChange={onChange}
-                        // value={startTime}
-                        name='startTime'
-                    >
-                        <option>Select a Start Time</option>
-                    </select>
+                 <input
+                    value={startTime}
+                    onChange={onChange}
+                    name='startTime'
+                    type='text'
+                 />
                 </label>
+                <br/>
                 <label>Duration
                     <select
                         onChange={onChange}
-                        // value={startTime}
+                        value={duration}
                         name='duration'
                     >
                         <option>Duration of Class</option>
+                        <option>30 Minutes</option>
+                        <option>45 Minutes</option>
+                        <option>1 Hour</option>
+                        <option>1 Hour 30 Minutes</option>
+                        <option>2 Hours</option>
                     </select>
                 </label>
+                <br/>
                 <label>Intensity Level
                     <select
                         onChange={onChange}
-                        // value={intensityLevel}
+                        value={intensityLevel}
                         name='intensityLevel'
                     >
                         <option>Select your Intensity Level</option>
+                        <option>Beginner</option>
+                        <option>Intermediate</option>
+                        <option>Expert</option>
                     </select>
                 </label>
+                <br/>
                 <label>Location
                     <input
-                        // value={location}
+                        value={location}
                         onChange={onChange}
                         name='location'
                         type='text' />
                 </label>
+                <br/>
                 <label>Current number of registered attendees
                     <input
-                        // value={attendees}
+                        value={attendees}
                         onChange={onChange}
                         name='attendees'
                         type='text' />
                 </label>
+                <br/>
                 <label>Max Class Size
                     <input
-                        // value={maxClassSize}
+                        value={maxClassSize}
                         onChange={onChange}
                         name='maxClassSize'
                         type='text' />
                 </label>
+                <br/>
+                <button id='submitBtn' type='submit'>Add Your Class</button>
             </form>
         </div>
     );
