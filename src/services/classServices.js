@@ -3,11 +3,11 @@ import React from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 
-const articleService = async ()=> {
+const classService = async ()=> {
    const resp = await axiosWithAuth()
       .get("/class")
          return resp.data
            
     }
 
-export default articleService;
+export default classService;
