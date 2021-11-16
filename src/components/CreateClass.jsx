@@ -15,7 +15,7 @@ const initailFormValues = {
 function CreateClass() {
 
     const [createdClass, setCreatedClass] = useState(initailFormValues);
-    const {instructor_id,name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize} = createdClass;
+    const {instructor_id,name, type, startTime, duration, intensityLevel, location, maxClassSize} = createdClass;
 
     const onChange = (evt) => {
         // work in progress
