@@ -3,6 +3,7 @@ import HomePage from "./components/HomePage";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import './styles/App.css'
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
       </Routes>
       <Routes>
         <Route path ="/getstarted" element={<LandingPage />} />
+      </Routes>
+      <Routes>
+        <Route path ="/signup" element={<SignUp />} />
       </Routes>
       <Routes>
         <Route path="/login" element={<Login />} />
