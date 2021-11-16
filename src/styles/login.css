@@ -11,12 +11,14 @@
 }
 #login-button {
     font-size: 1.3rem;
-    background-color: rgba(128,128,128, 0.5);
+    border: 1px solid white;
+    padding: 1%;
     margin-left: 70%;
     margin-bottom: 7%;
 }
 #login-button:hover{
-    background-color: rgb(128,128,128, 0.3);
+    color:rgb(2, 189, 117);
+    border: 1px solid rgb(2, 189, 117);
 }
  label {
     display: flex;

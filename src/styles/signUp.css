@@ -11,11 +11,13 @@
 } 
 #signUp-button {
     font-size: 1.3rem;
-    background-color: rgba(128,128,128, 0.5);
-    margin-left: 70%;
+    border: 1px solid white;
+    margin-left: 73%;
+    padding: 1%;
 }
 #signUp-button:hover{
-    background-color: rgb(128,128,128, 0.3);
+    color:rgb(2, 189, 117);
+    border: 1px solid rgb(2, 189, 117);
 }
  label {
     display: flex;
