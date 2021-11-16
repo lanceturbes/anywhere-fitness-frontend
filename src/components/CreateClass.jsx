@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 
+
 const initailFormValues = {
     instructor_id: '',
+
     name: '',
     type: false,
     startTime: '',
@@ -14,8 +16,11 @@ const initailFormValues = {
 
 function CreateClass() {
 
+
+
     const [createdClass, setCreatedClass] = useState(initailFormValues);
     const {instructor_id,name, type, startTime, duration, intensityLevel, location, maxClassSize} = createdClass;
+
 
     const onChange = (evt) => {
         // work in progress

@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom"
 import HomePage from "./components/HomePage";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import './styles/App.css'
 function App() {
   return (
@@ -16,7 +18,13 @@ function App() {
         <Route path="/" element={<HomePage />} />
       </Routes>
       <Routes>
-        <Route path="/login" element={<LandingPage />} />
+        <Route path ="/getstarted" element={<LandingPage />} />
+      </Routes>
+      <Routes>
+        <Route path ="/signup" element={<SignUp />} />
+      </Routes>
+      <Routes>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   )
