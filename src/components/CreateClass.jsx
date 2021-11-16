@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const initailFormValues = {
+const initialFormValues = {
     name: '',
     type: false,
     startTime: '',
@@ -13,7 +13,7 @@ const initailFormValues = {
 
 function CreateClass(props) {
 
-    const [createdClass, setCreatedClass] = useState(initailFormValues);
+    const [createdClass, setCreatedClass] = useState(initialFormValues);
     const {name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize} = createdClass;
 
     const onChange = (evt) => {

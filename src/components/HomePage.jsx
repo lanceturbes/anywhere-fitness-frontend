@@ -1,6 +1,7 @@
 
 import React from 'react';
 import {Link} from 'react-router-dom'; 
+
 export default function HomePage(){
     return (
         <div className="homepage-container">
@@ -12,13 +13,12 @@ export default function HomePage(){
         </div>
     )
 }
-import CreateClass from "./CreateClass"
+// import CreateClass from "./CreateClass"
 
-function HomePage() {
-  return <>
-  <CreateClass />
-  </>
-}
-
-export default HomePage
+// // function HomePage() {
+// //   return <>
+// //   <CreateClass />
+// //   </>
+// // }
+// export default HomePage
 
