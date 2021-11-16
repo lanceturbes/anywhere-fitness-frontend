@@ -7,7 +7,7 @@ export default function HomePage(){
         <div className="homepage-container">
             <h1>Start your journey to a healthier life.</h1>
             <hr/>
-            <Link to={`/login`}>
+            <Link to={`/getstarted`}>
             <button className="start-btn">Get started</button>
             </Link>
         </div>
