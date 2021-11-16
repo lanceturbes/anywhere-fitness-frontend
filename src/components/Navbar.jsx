@@ -7,6 +7,7 @@ export default function Navbar(){
             <div className="menu">
             <a href="/">Home</a>
             <a href="/login">Login</a>
+            <a href="/logout">Logout</a>
             
             </div>
         </div>
