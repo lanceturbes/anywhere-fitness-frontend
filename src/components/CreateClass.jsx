@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
-const initialFormValues = {
+
+const initailFormValues = {
+    instructor_id: '',
+
     name: '',
     type: false,
     startTime: '',
@@ -11,10 +14,13 @@ const initialFormValues = {
     maxClassSize: ''
 };
 
-function CreateClass(props) {
+function CreateClass() {
 
-    const [createdClass, setCreatedClass] = useState(initialFormValues);
-    const {name, type, startTime, duration, intensityLevel, location, attendees, maxClassSize} = createdClass;
+
+
+    const [createdClass, setCreatedClass] = useState(initailFormValues);
+    const {instructor_id,name, type, startTime, duration, intensityLevel, location, maxClassSize} = createdClass;
+
 
     const onChange = (evt) => {
         // work in progress
@@ -29,7 +35,15 @@ function CreateClass(props) {
         <div>
             <h2>Create Your Class</h2>
             <form id='class-form-container' onSubmit={onSubmit}>
-                <label>Instructor Name
+                <label>Instructor ID
+                    <input
+                        value={instructor_id}
+                        onChange={onChange}
+                        name='instructor_id'
+                        type='text'
+                    />
+                </label>
+                <label>Class Name
                     <input
                         value={name}
                         onChange={onChange}
@@ -70,9 +84,9 @@ function CreateClass(props) {
                         <option>Duration of Class</option>
                         <option>30 Minutes</option>
                         <option>45 Minutes</option>
-                        <option>1 Hour</option>
-                        <option>1 Hour 30 Minutes</option>
-                        <option>2 Hours</option>
+                        <option>60 Minutes</option>
+                        <option>90 Minutes</option>
+                        <option>120 Minutes</option>
                     </select>
                 </label>
                 <br/>
@@ -83,9 +97,9 @@ function CreateClass(props) {
                         name='intensityLevel'
                     >
                         <option>Select your Intensity Level</option>
-                        <option>Beginner</option>
-                        <option>Intermediate</option>
-                        <option>Expert</option>
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
                     </select>
                 </label>
                 <br/>
@@ -97,20 +111,13 @@ function CreateClass(props) {
                         type='text' />
                 </label>
                 <br/>
-                <label>Current number of registered attendees
-                    <input
-                        value={attendees}
-                        onChange={onChange}
-                        name='attendees'
-                        type='text' />
-                </label>
-                <br/>
                 <label>Max Class Size
                     <input
                         value={maxClassSize}
                         onChange={onChange}
                         name='maxClassSize'
-                        type='text' />
+                        type='text' 
+                        />
                 </label>
                 <br/>
                 <button id='submitBtn' type='submit'>Add Your Class</button>
