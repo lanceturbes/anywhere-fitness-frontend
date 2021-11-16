@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Logout from "./components/Logout";
 import './styles/App.css'
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
       </Routes>
+      <Routes>
+        <Route path="/logout" element={<Logout />} />
+      </Routes>
+        
+     
     </>
   )
 }

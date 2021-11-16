@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
-import { useHistory } from 'react-router';
+import {useNavigate} from 'react-router-dom';
 
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const Logout = (props) => {  
-    const { push } = useHistory();
+    const navigate = useNavigate();
 
     useEffect(()=> {
         const token = localStorage.getItem("token");
-        
+        navigate('/login');
         axiosWithAuth()
             .post('/logout')
             .then(resp => {                
                 localStorage.removeItem('token');
-                push('/login');
+                navigate('/login');
             });
     }, []);      
     return(<div></div>);
