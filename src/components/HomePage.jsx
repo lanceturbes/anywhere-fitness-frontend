@@ -1,5 +1,9 @@
+import CreateClass from "./CreateClass"
+
 function HomePage() {
-  return <h1>Hello, World!</h1>
+  return <>
+  <CreateClass />
+  </>
 }
 
 export default HomePage
