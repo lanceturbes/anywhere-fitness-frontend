@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {Link} from 'react-router-dom'; 
 export default function HomePage(){
@@ -11,3 +12,13 @@ export default function HomePage(){
         </div>
     )
 }
+import CreateClass from "./CreateClass"
+
+function HomePage() {
+  return <>
+  <CreateClass />
+  </>
+}
+
+export default HomePage
+

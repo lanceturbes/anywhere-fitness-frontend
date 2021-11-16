@@ -6,6 +6,14 @@ This repository contains source code for the frontend of a fitness platform. Thi
 
 --------------------------------------------------------------------------------
 
+## App-Flow Diagram
+
+The following chart describes initial planning for the overall user experience, and is subject to change as development progresses.
+
+![anywhere-fitness-app-state-flowchart](./references/anywhere-fitness-app-flow.png)
+
+--------------------------------------------------------------------------------
+
 ### ☝️ **Pitch**
 
 These days, fitness classes can be held anywhere- a park, an unfinished basement or a garage- not just at a traditional gym. Certified fitness instructors need an easy way to take the awkwardness out of attendance taking and client payment processing.
