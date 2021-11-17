@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import '../styles/userpage.css'
 
-export default function UserPage({users}){
-   
-    return (
+
+
+    
+    const UserPage = (props) => {
+        const { users } = props;
+        return (
             <div>
-                <h2>Welcome to Anywhere Fitness!</h2>
+                {users.map((res) => {
+                    return (
+                        <div className="userCard">
+                            <h1>{res.name}</h1>
+                            <p>{res.instructor}</p>
+                            <button id="userButton">Join</button>
+                        </div>
+                    )
+                })}
             </div>
         )
-       
-}
+    }
+
+    export default UserPage
