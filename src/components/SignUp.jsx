@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios';
-import "../styles/signUp.css"
+import "../styles/signUp.css";
+import formSchema from '../validation/formSchema';
+import * as yup from 'yup';
 
 const initialValues = {
     first_name:"",
@@ -11,14 +14,26 @@ const initialValues = {
     emailConfirm:""
 };
 
-export default function SignUp() {
+export default function SignUp({userSubmit}) {
     const [formValues, setFormValues] = useState(initialValues);
-
+    const [disabled,setDisabled] = useState(true);
+    const [formErrors,setFormErrors] =useState(initialValues)
+    
+    const validate = (name,value) => {
+        yup.reach(formSchema,name).validate(value)
+          .then(() => setFormErrors({...formErrors,[name]:''}))
+          .catch(err => {
+            setFormErrors({...formErrors,[name]:err.errors[0]})
+          })
+      }
+    
     const handleChange = (e) => {
+        validate(e.target.name,e.target.value);
         setFormValues({
             ...formValues,
             [e.target.name]: e.target.value
         });
+        console.log(formValues)
     };
 
     const handleSubmit = (e) => {
@@ -26,6 +41,7 @@ export default function SignUp() {
         axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', formValues)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
+            console.log(res.data)
         })
         .catch(err => {
             console.log(err.message);
@@ -35,6 +51,11 @@ export default function SignUp() {
         })
     };
 
+    useEffect(() => {
+        formSchema.isValid(formValues).then(valid => setDisabled(!valid))
+        
+    },[formValues])
+    
     return (
         <>
             <div id="card-content">
@@ -52,6 +73,8 @@ export default function SignUp() {
                                 type="text"
                                 onChange={handleChange}
                             />
+                            <div className="errors">{formErrors.first_name}</div>
+
                             <label>Last Name:</label>
                             <input
                                 value={formValues.last_name}
@@ -59,6 +82,7 @@ export default function SignUp() {
                                 type="text"
                                 onChange={handleChange}
                             />
+                            <div className="errors">{formErrors.last_name}</div>
                             <label>Username:</label>
                             <input
                                 value={formValues.username}
@@ -66,6 +90,7 @@ export default function SignUp() {
                                 type="text"
                                 onChange={handleChange}
                             />
+                            <div className="errors">{formErrors.username}</div>
 
                             <label>Password:</label>
                             <input
@@ -74,6 +99,7 @@ export default function SignUp() {
                                 type="password"
                                 onChange={handleChange}
                             />
+                            <div className="errors">{formErrors.password}</div>
                             <label>E-mail:</label>
                             <input
                                 value={formValues.email}
@@ -81,6 +107,7 @@ export default function SignUp() {
                                 type="text"
                                 onChange={handleChange}
                             />
+                            <div className="errors">{formErrors.email}</div>
                             <label>Confirm E-mail:</label>
                             <input
                                 value={formValues.emailConfirm}
@@ -88,13 +115,14 @@ export default function SignUp() {
                                 type="text"
                                 onChange={handleChange}
                             />
+                            <div className="errors">{formErrors.emailConfirm}</div>
                         </div>
 
-                        <div className="errors">
-
-                        </div>
-
-                        <button id="signUp-button">Sign Up</button>
+                        
+                        <Link to={`/users`}>
+                        <button id="signUp-button" type ="submit" onClick={() => userSubmit()} disabled={disabled}>Sign Up</button>
+                        </Link>
+                        
                     </div>
                 </form>
             </div>
