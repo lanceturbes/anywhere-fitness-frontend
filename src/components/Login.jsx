@@ -66,8 +66,9 @@ export default function Login() {
                         <div className="errors">
 
                         </div>
-
+                        <Link to={`/dashboard`}>
                         <button id="login-button">Login</button>
+                        </Link>
                         <Link to={`/signup`}>
                         Don't have an account yet?</Link>
                     </div>
