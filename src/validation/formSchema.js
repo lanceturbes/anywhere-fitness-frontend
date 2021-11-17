@@ -28,9 +28,7 @@ const formSchema = yup.object().shape({
                     .string()
                     .email()
                     .required('Email address is not matching')
-                    .when("email", {
-                        is: email => (email && email.length > 0 ? true : false),
-                        then: yup.string().oneOf([yup.ref("email")], "Email address doesn't match")
-                    })
+                    .oneOf([yup.ref("email")], "Email address doesn't match")
+                    
 })
 export default formSchema;
