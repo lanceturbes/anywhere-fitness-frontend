@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 import axios from 'axios';
 import HomePage from "./components/HomePage";
@@ -10,6 +10,7 @@ import './styles/App.css'
 import UserPage from "./components/UserPage";
 function App() {
   const [users,setUsers] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   const userSubmit= () => {
     axios.get(`https://anywhere-fitness-bwft5.herokuapp.com/api/users`)
@@ -18,6 +19,18 @@ function App() {
     })
     .catch(err => console.log(err))
 }
+
+useEffect(() => {
+    axios
+      .get("https://anywhere-fitness-bwft5.herokuapp.com/api/classes")
+      .then((res) => {
+        console.log(res.data);
+        return setUserData(res.data);
+      })
+      .catch((err) => {
+        console.log("uh-oh!");
+      });
+  }, []);
 
 
   return (
@@ -36,8 +49,9 @@ function App() {
         <Route path ="/signup" element={<SignUp userSubmit={userSubmit}/>} />
       
         <Route path="/login" element={<Login />} />
-      
-        <Route path="/users" element={<UserPage users={users} />} />
+        
+        <Route path="/users" element={<UserPage users={userData} />} />
+
       </Routes>
     </>
   )

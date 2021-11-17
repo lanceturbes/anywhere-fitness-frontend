@@ -1,31 +1,22 @@
-#signUp-form {
+.userCard {
     display: flex;
     flex-direction: column;
     background: rgb(35,42,71);
     border-radius: 8px;
     box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-    height: 420px;
+    height: 250px;
     margin: 6rem auto 8.1rem auto;
     width: 300px;
     padding: 12px 44px;
-} 
-#signUp-button {
+}
+#userButton {
     font-size: 1.3rem;
     border: 1px solid white;
-    margin-left: 73%;
-    margin-top: 4%;
     padding: 1%;
+    margin-left: 70%;
+    margin-top: 44%;
 }
-#signUp-button:hover{
+#userButton:hover{
     color:rgb(2, 189, 117);
     border: 1px solid rgb(2, 189, 117);
-}
- label {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.3em;
-}
-input {
-    background-color: ivory;
-    color: black;
 }
