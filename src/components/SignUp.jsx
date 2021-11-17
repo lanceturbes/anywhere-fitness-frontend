@@ -11,7 +11,8 @@ const initialValues = {
     username:"",
     password:"",
     email:"",
-    emailConfirm:""
+    emailConfirm:"",
+    instructorCode:""
 };
 
 export default function SignUp({userSubmit}) {
@@ -38,7 +39,15 @@ export default function SignUp({userSubmit}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', formValues)
+        const registerPayload = {
+            username: formValues.username,
+            password: formValues.password,
+            email: formValues.email,
+            first_name: formValues.first_name,
+            last_name: formValues.last_name,
+            instructor_auth: formValues.instructorCode
+        }
+        axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', registerPayload)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
             console.log(res.data)
@@ -66,56 +75,64 @@ export default function SignUp({userSubmit}) {
 
                     <div className="login-input-container">
                         <div className='form-inputs' id='login-inputs'>
-                            <label>First Name:</label>
+                            <label>First Name:
                             <input
                                 value={formValues.first_name}
                                 name="first_name"
                                 type="text"
                                 onChange={handleChange}
-                            />
+                            /></label>
                             <div className="errors">{formErrors.first_name}</div>
 
-                            <label>Last Name:</label>
+                            <label>Last Name:
                             <input
                                 value={formValues.last_name}
                                 name="last_name"
                                 type="text"
                                 onChange={handleChange}
-                            />
+                            /></label>
                             <div className="errors">{formErrors.last_name}</div>
-                            <label>Username:</label>
+                            <label>Username:
                             <input
                                 value={formValues.username}
                                 name="username"
                                 type="text"
                                 onChange={handleChange}
-                            />
+                            /></label>
                             <div className="errors">{formErrors.username}</div>
 
-                            <label>Password:</label>
+                            <label>Password:
                             <input
                                 value={formValues.password}
                                 name="password"
                                 type="password"
                                 onChange={handleChange}
-                            />
+                            /></label>
                             <div className="errors">{formErrors.password}</div>
-                            <label>E-mail:</label>
+                            <label>E-mail:
                             <input
                                 value={formValues.email}
                                 name="email"
                                 type="text"
                                 onChange={handleChange}
-                            />
+                            /></label>
                             <div className="errors">{formErrors.email}</div>
-                            <label>Confirm E-mail:</label>
+                            <label>Confirm E-mail:
                             <input
                                 value={formValues.emailConfirm}
                                 name="emailConfirm"
                                 type="text"
                                 onChange={handleChange}
-                            />
+                            /></label>
                             <div className="errors">{formErrors.emailConfirm}</div>
+                            <label>Instructor Code:
+                            <input
+                                value={formValues.instructorCode}
+                                name="instructorCode"
+                                type="text"
+                                onChange={handleChange}
+                            />
+                            </label>
                         </div>
 
                         
