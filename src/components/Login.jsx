@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'; 
 import axios from 'axios';
 import "../styles/login.css"
@@ -8,7 +8,7 @@ const initialValues = {
     password:""
 };
 
-export default function Login() {
+export default function Login({disabled,setDisabled}) {
     const [formValues, setFormValues] = useState(initialValues);
 
 
@@ -24,7 +24,7 @@ export default function Login() {
         axios.post ('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/login', formValues)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
-            login()
+            
         })
         .catch(err => {
             console.log(err.message);
@@ -33,13 +33,9 @@ export default function Login() {
             setFormValues(formValues)
         })
     };
-    const login = () => {
-        axios.get('https://anywhere-fitness-bwft5.herokuapp.com/api/classes/:id')
-        .then(res => {
-            console.log(res.data)
-        })
-        .catch(err => console.log(err))
-    }
+    useEffect(()=>{
+        setDisabled(!disabled)
+    },[formValues])
     
 
     return (
@@ -73,7 +69,7 @@ export default function Login() {
                         
                         <Link to={`/dashboard`}>
 
-                        <button id="login-button">Login</button>
+                        <button id="login-button" disabled={disabled}>Login</button>
                         </Link>
 
                         <Link to={`/signup`}>

@@ -26,9 +26,14 @@ const formSchema = yup.object().shape({
             .required('Email is required'),
     emailConfirm:yup
                     .string()
-                    .email()
-                    .required('Email address is not matching')
-                    .oneOf([yup.ref("email")], "Email address doesn't match")
-                    
+                    .when("email", {
+                        is: val => (val && val.length > 0 ? true : false),
+                        then: yup.string().oneOf(
+                          [yup.ref("email")],
+                          "Email address needs to be the same"
+                        )
+                      }),
+    instructorCode: yup.string()
+                
 })
 export default formSchema;

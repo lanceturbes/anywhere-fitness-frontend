@@ -15,9 +15,9 @@ const initialValues = {
     instructorCode:""
 };
 
-export default function SignUp({userSubmit}) {
+export default function SignUp({disabled,setDisabled}) {
     const [formValues, setFormValues] = useState(initialValues);
-    const [disabled,setDisabled] = useState(true);
+    
     const [formErrors,setFormErrors] =useState(initialValues)
     
     const validate = (name,value) => {
@@ -34,7 +34,6 @@ export default function SignUp({userSubmit}) {
             ...formValues,
             [e.target.name]: e.target.value
         });
-        console.log(formValues)
     };
 
     const handleSubmit = (e) => {
@@ -135,8 +134,8 @@ export default function SignUp({userSubmit}) {
                         </div>
 
                         
-                        <Link to={`/users`}>
-                        <button id="signUp-button" type ="submit" onClick={() => userSubmit()} disabled={disabled}>Sign Up</button>
+                        <Link to={`/dashboard`}>
+                        <button id="signUp-button" type ="submit" disabled={disabled}>Sign Up</button>
                         </Link>
                         
                     </div>

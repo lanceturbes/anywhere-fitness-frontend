@@ -9,16 +9,10 @@ import SignUp from "./components/SignUp";
 import './styles/App.css'
 import UserPage from "./components/UserPage";
 function App() {
-  const [users,setUsers] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [disabled,setDisabled] = useState(true);
 
-  const userSubmit= () => {
-    axios.get(`https://anywhere-fitness-bwft5.herokuapp.com/api/users`)
-    .then(res => {
-    setUsers(res.data)
-    })
-    .catch(err => console.log(err))
-}
+
 
 useEffect(() => {
     axios
@@ -46,9 +40,9 @@ useEffect(() => {
       
         <Route path ="/getstarted" element={<LandingPage />} />
      
-        <Route path ="/signup" element={<SignUp userSubmit={userSubmit}/>} />
+        <Route path ="/signup" element={<SignUp disabled ={disabled} setDisabled={setDisabled}/>} />
       
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login disabled ={disabled} setDisabled={setDisabled}/>} />
         
         <Route path="/dashboard" element={<UserPage users={userData} />} />
 
