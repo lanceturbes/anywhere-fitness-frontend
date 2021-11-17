@@ -21,10 +21,10 @@ export default function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/login', formValues)
+        axios.post ('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/login', formValues)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
-            
+            login()
         })
         .catch(err => {
             console.log(err.message);
@@ -33,6 +33,13 @@ export default function Login() {
             setFormValues(formValues)
         })
     };
+    const login = () => {
+        axios.get('https://anywhere-fitness-bwft5.herokuapp.com/api/classes/:id')
+        .then(res => {
+            console.log(res.data)
+        })
+        .catch(err => console.log(err))
+    }
     
 
     return (
@@ -46,29 +53,29 @@ export default function Login() {
 
                     <div className="login-input-container">
                         <div className='form-inputs' id='login-inputs'>
-                            <label>Username:</label>
+                            <label>Username:
                             <input
                                 value={formValues.username}
                                 name="username"
                                 type="text"
                                 onChange={handleChange}
-                            />
+                            /></label>
 
-                            <label>Password:</label>
+                            <label>Password:
                             <input
                                 value={formValues.password}
                                 name="password"
                                 type="password"
                                 onChange={handleChange}
-                            />
+                            /></label>
                         </div>
 
-                        <div className="errors">
-
-                        </div>
+                        
                         <Link to={`/dashboard`}>
+
                         <button id="login-button">Login</button>
                         </Link>
+
                         <Link to={`/signup`}>
                         Don't have an account yet?</Link>
                     </div>

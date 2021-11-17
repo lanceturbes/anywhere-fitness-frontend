@@ -50,7 +50,6 @@ export default function SignUp({userSubmit}) {
         axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', registerPayload)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
-            console.log(res.data)
         })
         .catch(err => {
             console.log(err.message);
