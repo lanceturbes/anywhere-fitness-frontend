@@ -33,15 +33,15 @@ hr{
     color:white;
     width:50%;
 }
-.start-btn,.content button {
+.btn {
     border: 1px solid white;
     margin:4% 0%;
     padding:1%;
-    width:10%;
+    width:20%;
     font-size:1.2rem;
     text-decoration: none;
 }
-.start-btn:hover, .content button:hover{
+.btn:hover{
     color:rgb(2, 189, 117);
     border: 1px solid rgb(2, 189, 117);
 }
@@ -69,6 +69,45 @@ hr{
 }
 .content button{
     width: 20%;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 25%;
+    margin: 6rem auto 8.1rem auto;
+    width: 30%;
+    padding: 2% 3%;
+}
+#signUp-form{
+    width: 39%;
+}
+
+.userCard {
+    display: flex;
+    flex-direction: column;
+    background: rgb(35,42,71);
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 250px;
+    margin: 6rem auto 8.1rem auto;
+    width: 300px;
+    padding: 12px 44px;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-size: 1.2rem;
+    line-height: 2rem;
+}
+
+input{
+    background-color: rgba(42,47,74,255);
+    border:rgba(42,47,74,255) ;
+    width: 95%;
+    height:2.1rem;
 }
 
 /* Animations */

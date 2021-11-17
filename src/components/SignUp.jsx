@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-import "../styles/signUp.css";
 import formSchema from '../validation/formSchema';
 import * as yup from 'yup';
 
@@ -15,9 +14,9 @@ const initialValues = {
     instructorCode:""
 };
 
-export default function SignUp({disabled,setDisabled}) {
+export default function SignUp() {
     const [formValues, setFormValues] = useState(initialValues);
-    
+    const [disabled,setDisabled] = useState(true);
     const [formErrors,setFormErrors] =useState(initialValues)
     
     const validate = (name,value) => {
@@ -66,13 +65,14 @@ export default function SignUp({disabled,setDisabled}) {
     return (
         <>
             <div id="card-content">
-                <form id="signUp-form" onSubmit={handleSubmit}>
+                <form id="signUp-form" className="form" onSubmit={handleSubmit}>
                     <div className="login-form-header">
                         <h1>Sign Up</h1>
                     </div>
 
-                    <div className="login-input-container">
-                        <div className='form-inputs' id='login-inputs'>
+                    <div className="form-container">
+                        <div className='input-container' id='login-inputs'>
+                       
                             <label>First Name:
                             <input
                                 value={formValues.first_name}
@@ -89,6 +89,7 @@ export default function SignUp({disabled,setDisabled}) {
                                 type="text"
                                 onChange={handleChange}
                             /></label>
+                            
                             <div className="errors">{formErrors.last_name}</div>
                             <label>Username:
                             <input
@@ -106,6 +107,7 @@ export default function SignUp({disabled,setDisabled}) {
                                 type="password"
                                 onChange={handleChange}
                             /></label>
+
                             <div className="errors">{formErrors.password}</div>
                             <label>E-mail:
                             <input
@@ -135,7 +137,7 @@ export default function SignUp({disabled,setDisabled}) {
 
                         
                         <Link to={`/dashboard`}>
-                        <button id="signUp-button" type ="submit" disabled={disabled}>Sign Up</button>
+                        <button className="btn" type ="submit" disabled={disabled}>Sign Up</button>
                         </Link>
                         
                     </div>

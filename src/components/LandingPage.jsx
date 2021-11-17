@@ -12,14 +12,14 @@ export default function LandingPage(){
                 <div className="content">
                 <h2>Custom training plan</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, quidem molestias deserunt, fuga debitis consequatur voluptas pariatur, ipsa labore eligendi porro maxime illum placeat recusandae ipsum beatae ipsam temporibus at.</p>
-                <button>Learn more</button>
+                <button className="btn">Learn more</button>
                 </div>
             </div>
             <div className="landingpage-content">
                 <div className="content">
                 <h2>Custom training plan</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, quidem molestias deserunt, fuga debitis consequatur voluptas pariatur, ipsa labore eligendi porro maxime illum placeat recusandae ipsum beatae ipsam temporibus at.</p>
-                <button>Learn more</button>
+                <button className="btn">Learn more</button>
                 </div>
                  <img src="https://cdn.pixabay.com/photo/2017/08/01/12/00/people-2564757_960_720.jpg" alt="filler-text"/>
                 
@@ -30,7 +30,7 @@ export default function LandingPage(){
                 <div className="content">
                 <h2>Custom training plan</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, quidem molestias deserunt, fuga debitis consequatur voluptas pariatur, ipsa labore eligendi porro maxime illum placeat recusandae ipsum beatae ipsam temporibus at.</p>
-                <button>Learn more</button>
+                <button className="btn">Learn more</button>
                 </div>
             
             </div>

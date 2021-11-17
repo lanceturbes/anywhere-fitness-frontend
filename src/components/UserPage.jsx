@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/userpage.css'
-
-
-
-    
+import React from 'react';
+ 
     const UserPage = (props) => {
         const { users } = props;
         return (
@@ -13,7 +9,7 @@ import '../styles/userpage.css'
                         <div className="userCard" key ={res.id}>
                             <h1>{res.name}</h1>
                             <p>{res.instructor}</p>
-                            <button id="userButton">Join</button>
+                            <button className="btn">Join</button>
                         </div>
                     )
                 })}
