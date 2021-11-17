@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'; 
 import axios from 'axios';
 import "../styles/login.css"
 
@@ -9,6 +10,7 @@ const initialValues = {
 
 export default function Login() {
     const [formValues, setFormValues] = useState(initialValues);
+
 
     const handleChange = (e) => {
         setFormValues({
@@ -22,6 +24,7 @@ export default function Login() {
         axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/login', formValues)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
+            
         })
         .catch(err => {
             console.log(err.message);
@@ -30,6 +33,7 @@ export default function Login() {
             setFormValues(formValues)
         })
     };
+    
 
     return (
         <>
@@ -64,8 +68,8 @@ export default function Login() {
                         </div>
 
                         <button id="login-button">Login</button>
-                        <a href ="/signup">
-                        Don't have an account yet?</a>
+                        <Link to={`/signup`}>
+                        Don't have an account yet?</Link>
                     </div>
                 </form>
             </div>
