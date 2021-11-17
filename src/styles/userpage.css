@@ -9,12 +9,15 @@
     width: 300px;
     padding: 12px 44px;
 }
+.infoList {
+    font-size: 1.3rem;
+    margin-top: 20%;
+}
 #userButton {
     font-size: 1.3rem;
     border: 1px solid white;
     padding: 1%;
     margin-left: 70%;
-    margin-top: 44%;
 }
 #userButton:hover{
     color:rgb(2, 189, 117);
