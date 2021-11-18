@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios';
-import "../styles/signUp.css";
 import formSchema from '../validation/formSchema';
 import * as yup from 'yup';
 
@@ -15,7 +14,7 @@ const initialValues = {
     instructorCode:""
 };
 
-export default function SignUp({userSubmit}) {
+export default function SignUp() {
     const [formValues, setFormValues] = useState(initialValues);
     const [disabled,setDisabled] = useState(true);
     const [formErrors,setFormErrors] =useState(initialValues)
@@ -34,7 +33,6 @@ export default function SignUp({userSubmit}) {
             ...formValues,
             [e.target.name]: e.target.value
         });
-        console.log(formValues)
     };
 
     const handleSubmit = (e) => {
@@ -50,7 +48,6 @@ export default function SignUp({userSubmit}) {
         axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', registerPayload)
         .then((res) => {
             window.localStorage.setItem('token', res.data.token);
-            console.log(res.data)
         })
         .catch(err => {
             console.log(err.message);
@@ -68,13 +65,14 @@ export default function SignUp({userSubmit}) {
     return (
         <>
             <div id="card-content">
-                <form id="signUp-form" onSubmit={handleSubmit}>
+                <form id="signUp-form" className="form" onSubmit={handleSubmit}>
                     <div className="login-form-header">
                         <h1>Sign Up</h1>
                     </div>
 
-                    <div className="login-input-container">
-                        <div className='form-inputs' id='login-inputs'>
+                    <div className="form-container">
+                        <div className='input-container' id='login-inputs'>
+                       
                             <label>First Name:
                             <input
                                 value={formValues.first_name}
@@ -91,6 +89,7 @@ export default function SignUp({userSubmit}) {
                                 type="text"
                                 onChange={handleChange}
                             /></label>
+                            
                             <div className="errors">{formErrors.last_name}</div>
                             <label>Username:
                             <input
@@ -108,6 +107,7 @@ export default function SignUp({userSubmit}) {
                                 type="password"
                                 onChange={handleChange}
                             /></label>
+
                             <div className="errors">{formErrors.password}</div>
                             <label>E-mail:
                             <input
@@ -136,8 +136,8 @@ export default function SignUp({userSubmit}) {
                         </div>
 
                         
-                        <Link to={`/users`}>
-                        <button id="signUp-button" type ="submit" onClick={() => userSubmit()} disabled={disabled}>Sign Up</button>
+                        <Link to={`/dashboard`}>
+                        <button className="btn" type ="submit" disabled={disabled}>Sign Up</button>
                         </Link>
                         
                     </div>
