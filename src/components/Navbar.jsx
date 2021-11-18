@@ -6,7 +6,6 @@ export default function Navbar(){
             <h3>AnywhereFitness</h3>
             <div className="menu">
             <a href="/">Home</a>
-            <a href="/login">Login</a>
             <a href="/logout">Logout</a>
             
             </div>
