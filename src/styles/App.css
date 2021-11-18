@@ -97,6 +97,10 @@ hr{
     padding: 12px 44px;
     animation: 1s ease-in content;
 }
+.infoList {
+    font-size: 1.3em;
+    margin: 5%;
+}
 .input-container{
     display: flex;
     flex-direction: column;
