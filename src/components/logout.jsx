@@ -12,7 +12,7 @@ const Logout = (props) => {
         axiosWithAuth()
             .post('/logout')
             .then(resp => {                
-                localStorage.removeItem('token');
+                localStorage.removeItem(token);
                 navigate('/login');
             });
     }, []);      
