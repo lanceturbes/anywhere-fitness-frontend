@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-import axiosWithAuth from "../utils/axiosWithAuth"
+import axiosWithAuth from "./../../utilities/axiosWithAuth"
 
 const UserPage = () => {
   const [classData, setClassData] = useState([])
