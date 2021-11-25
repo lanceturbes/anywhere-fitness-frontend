@@ -5,9 +5,11 @@ import React from 'react'
 import LoginForm from "./../forms/LoginForm/LoginForm"
 
 function LoginPage() {
-  <section>
-    <LoginForm />
-  </section>
+  return (
+    <section>
+      <LoginForm />
+    </section>
+  )
 }
 
 export default LoginPage
