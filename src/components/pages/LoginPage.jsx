@@ -1,21 +1,20 @@
 // Libraries
-import React, { useState } from 'react'
+import React from 'react'
+import { Routes, Route, NavLink } from "react-router-dom"
 
 // Components
-import LoginForm from "./../forms/LoginForm/LoginForm"
-import SignUpForm from "./../forms/RegisterForm/SignUp"
+import LoginForm from "../forms/LoginForm/LoginForm"
+import RegisterForm from "../forms/RegisterForm/RegisterForm"
 
 function LoginPage() {
-  const [status, setStatus] = useState("login")
-
   return (
     <section>
-      {status === "login" && <LoginForm />}
-      {status === "signUp" && <SignUpForm />}
-      <div>
-        {status === "login" && <button onClick={() => { setStatus("login") }}>Sign Up</button>}
-        {status === "signUp" && <button onClick={() => { setStatus("signUp") }}>Login</button>}
-      </div>
+      <NavLink to="/auth/login">Log In</NavLink>
+      <NavLink to="/auth/register">Register</NavLink>
+      <Routes>
+        <Route path="login" element={<LoginForm />} />
+        <Route path="register" element={<RegisterForm />} />
+      </Routes>
     </section>
   )
 }

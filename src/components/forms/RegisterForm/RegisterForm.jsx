@@ -5,17 +5,10 @@ import axios from 'axios'
 import formSchema from '../../../schemas/formSchema'
 import * as yup from 'yup'
 
-const initialValues = {
-  first_name: "",
-  last_name: "",
-  username: "",
-  password: "",
-  email: "",
-  emailConfirm: "",
-  instructorCode: ""
-};
+// Configuration
+import initialValues from "./initialValues.json"
 
-export default function SignUp() {
+function RegisterForm() {
   const [formValues, setFormValues] = useState(initialValues)
   const [disabled, setDisabled] = useState(true)
   const [formErrors, setFormErrors] = useState(initialValues)
@@ -29,15 +22,15 @@ export default function SignUp() {
   }
 
   const handleChange = (e) => {
-    validate(e.target.name, e.target.value);
+    validate(e.target.name, e.target.value)
     setFormValues({
       ...formValues,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const registerPayload = {
       username: formValues.username,
       password: formValues.password,
@@ -48,15 +41,15 @@ export default function SignUp() {
     }
     axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', registerPayload)
       .then((res) => {
-        window.localStorage.setItem('token', res.data.token);
+        window.localStorage.setItem('token', res.data.token)
       })
       .catch(err => {
-        console.log(err.message);
+        console.log(err.message)
       })
       .finally(() => {
         setFormValues(formValues)
       })
-  };
+  }
 
   useEffect(() => {
     formSchema.isValid(formValues).then(valid => setDisabled(!valid))
@@ -65,8 +58,6 @@ export default function SignUp() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Sign Up</h1>
-
       <label>First Name:
         <input
           value={formValues.first_name}
@@ -141,3 +132,5 @@ export default function SignUp() {
     </form>
   )
 }
+
+export default RegisterForm
