@@ -64,86 +64,80 @@ export default function SignUp() {
   }, [formValues])
 
   return (
-    <>
-      <div id="card-content">
-        <form id="signUp-form" className="form" onSubmit={handleSubmit}>
-          <div className="login-form-header">
-            <h1>Sign Up</h1>
-          </div>
+    <form onSubmit={handleSubmit}>
+      <h1>Sign Up</h1>
 
-          <div className="form-container">
-            <div className='input-container' id='login-inputs'>
-
-              <label>First Name:
-                <input
-                  value={formValues.first_name}
-                  name="first_name"
-                  type="text"
-                  onChange={handleChange}
-                /></label>
-              <div className="errors">{formErrors.first_name}</div>
-
-              <label>Last Name:
-                <input
-                  value={formValues.last_name}
-                  name="last_name"
-                  type="text"
-                  onChange={handleChange}
-                /></label>
-
-              <div className="errors">{formErrors.last_name}</div>
-              <label>Username:
-                <input
-                  value={formValues.username}
-                  name="username"
-                  type="text"
-                  onChange={handleChange}
-                /></label>
-              <div className="errors">{formErrors.username}</div>
-
-              <label>Password:
-                <input
-                  value={formValues.password}
-                  name="password"
-                  type="password"
-                  onChange={handleChange}
-                /></label>
-
-              <div className="errors">{formErrors.password}</div>
-              <label>E-mail:
-                <input
-                  value={formValues.email}
-                  name="email"
-                  type="text"
-                  onChange={handleChange}
-                /></label>
-              <div className="errors">{formErrors.email}</div>
-              <label>Confirm E-mail:
-                <input
-                  value={formValues.emailConfirm}
-                  name="emailConfirm"
-                  type="text"
-                  onChange={handleChange}
-                /></label>
-              <div className="errors">{formErrors.emailConfirm}</div>
-              <label>Instructor Code:
-                <input
-                  value={formValues.instructorCode}
-                  name="instructorCode"
-                  type="text"
-                  onChange={handleChange}
-                />
-              </label>
-            </div>
+      <label>First Name:
+        <input
+          value={formValues.first_name}
+          name="first_name"
+          type="text"
+          onChange={handleChange}
+        />
+      </label>
 
 
-            <Link to={`/dashboard`}>
-              <button className="btn" type="submit" disabled={disabled}>Sign Up</button>
-            </Link>
+      <label>Last Name:
+        <input
+          value={formValues.last_name}
+          name="last_name"
+          type="text"
+          onChange={handleChange}
+        />
+      </label>
 
-          </div>
-        </form>
-      </div>
-    </>
+
+      <label>Username:
+        <input
+          value={formValues.username}
+          name="username"
+          type="text"
+          onChange={handleChange}
+        />
+      </label>
+
+
+      <label>Password:
+        <input
+          value={formValues.password}
+          name="password"
+          type="password"
+          onChange={handleChange}
+        />
+      </label>
+
+
+      <label>E-mail:
+        <input
+          value={formValues.email}
+          name="email"
+          type="text"
+          onChange={handleChange}
+        />
+      </label>
+
+      <label>Confirm E-mail
+        <input
+          value={formValues.emailConfirm}
+          name="emailConfirm"
+          type="text"
+          onChange={handleChange}
+        />
+      </label>
+
+      <label>Instructor Code
+        <input
+          value={formValues.instructorCode}
+          name="instructorCode"
+          type="text"
+          onChange={handleChange}
+        />
+      </label>
+
+      <Link to={`/dashboard`}>
+        <button className="btn" type="submit" disabled={disabled}>Sign Up</button>
+      </Link>
+
+    </form>
   )
 }
