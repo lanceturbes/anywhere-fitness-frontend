@@ -1,14 +1,13 @@
+// Libraries
 import React from 'react'
 import { Routes, Route } from "react-router-dom"
 
-import UserPage from "./components/UserPage"
-import HomePage from "./components/HomePage"
-import Navbar from "./components/Navbar"
-import Login from "./components/Login"
-import SignUp from "./components/SignUp"
-import Logout from "./components/Logout"
-
-import './styles/App.css'
+// Components
+import UserPage from "./components/pages/Dashboard"
+import HomePage from "./components/pages/HomePage"
+import Navbar from "./components/elements/Navbar"
+import LoginPage from "./components/pages/LoginPage"
+import Logout from './components/elements/Logout'
 
 function App() {
   return (
@@ -16,8 +15,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth/*" element={<LoginPage />} />
         <Route path="/dashboard" element={<UserPage />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>

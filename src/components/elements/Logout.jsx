@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Logout = () => {
-  useEffect((navigate = useNavigate) => {
+  const navigate = useNavigate()
+
+  useEffect(() => {
     localStorage.removeItem('token')
     navigate('/login')
   }, [])
