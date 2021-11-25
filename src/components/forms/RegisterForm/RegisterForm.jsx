@@ -2,26 +2,20 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import formSchema from '../../../schemas/formSchema'
+import registerSchema from '../../../schemas/registerSchema'
 import * as yup from 'yup'
 
 // Configuration
 import initialValues from "./initialValues.json"
+import { API_URL } from '../../../config'
 
 function RegisterForm() {
   const [formValues, setFormValues] = useState(initialValues)
   const [disabled, setDisabled] = useState(true)
   const [formErrors, setFormErrors] = useState(initialValues)
 
-  const validate = (name, value) => {
-    yup.reach(formSchema, name).validate(value)
-      .then(() => setFormErrors({ ...formErrors, [name]: '' }))
-      .catch(err => {
-        setFormErrors({ ...formErrors, [name]: err.errors[0] })
-      })
-  }
-
-  const handleChange = (e) => {
+  // Event Handlers
+  function handleChange(e) {
     validate(e.target.name, e.target.value)
     setFormValues({
       ...formValues,
@@ -29,7 +23,7 @@ function RegisterForm() {
     })
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault()
     const registerPayload = {
       username: formValues.username,
@@ -39,26 +33,41 @@ function RegisterForm() {
       last_name: formValues.last_name,
       instructor_auth: formValues.instructorCode
     }
-    axios.post('https://anywhere-fitness-bwft5.herokuapp.com/api/auth/register', registerPayload)
+    axios.post(`${API_URL}/auth/register`, registerPayload)
       .then((res) => {
         window.localStorage.setItem('token', res.data.token)
       })
       .catch(err => {
-        console.log(err.message)
+        console.error(err.message)
       })
-      .finally(() => {
-        setFormValues(formValues)
+  }
+
+  // Validation
+  function validate(inputName, inputValue) {
+    yup.reach(registerSchema, inputName)
+      .validate(inputValue)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [inputName]: false
+        })
+      })
+      .catch(() => {
+        setFormErrors({
+          ...formErrors,
+          [inputName]: true
+        })
       })
   }
 
   useEffect(() => {
-    formSchema.isValid(formValues).then(valid => setDisabled(!valid))
-
+    registerSchema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>First Name:
+      <label>
+        {formErrors.first_name && <span classname="required">* </span>}First Name
         <input
           value={formValues.first_name}
           name="first_name"
@@ -67,8 +76,8 @@ function RegisterForm() {
         />
       </label>
 
-
-      <label>Last Name:
+      <label>
+        {formErrors.last_name && <span classname="required">* </span>}Last Name
         <input
           value={formValues.last_name}
           name="last_name"
@@ -77,8 +86,8 @@ function RegisterForm() {
         />
       </label>
 
-
-      <label>Username:
+      <label>
+        {formErrors.username && <span classname="required">* </span>}Username
         <input
           value={formValues.username}
           name="username"
@@ -87,8 +96,18 @@ function RegisterForm() {
         />
       </label>
 
+      <label>
+        {formErrors.email && <span classname="required">* </span>}Email
+        <input
+          value={formValues.email}
+          name="email"
+          type="email"
+          onChange={handleChange}
+        />
+      </label>
 
-      <label>Password:
+      <label>
+        {formErrors.password && <span classname="required">* </span>}Password
         <input
           value={formValues.password}
           name="password"
@@ -97,26 +116,8 @@ function RegisterForm() {
         />
       </label>
 
-
-      <label>E-mail:
-        <input
-          value={formValues.email}
-          name="email"
-          type="text"
-          onChange={handleChange}
-        />
-      </label>
-
-      <label>Confirm E-mail
-        <input
-          value={formValues.emailConfirm}
-          name="emailConfirm"
-          type="text"
-          onChange={handleChange}
-        />
-      </label>
-
-      <label>Instructor Code
+      <label>
+        Instructor Code
         <input
           value={formValues.instructorCode}
           name="instructorCode"
@@ -126,7 +127,7 @@ function RegisterForm() {
       </label>
 
       <Link to={`/dashboard`}>
-        <button className="btn" type="submit" disabled={disabled}>Sign Up</button>
+        <button disabled={disabled}>Sign Up</button>
       </Link>
 
     </form>

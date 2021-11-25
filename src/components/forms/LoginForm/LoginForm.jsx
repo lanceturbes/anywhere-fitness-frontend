@@ -1,5 +1,5 @@
 // Libraries
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from "yup"
@@ -42,31 +42,33 @@ function LoginForm() {
     }
   }
 
+  // Validation
   function validate(inputName, inputValue) {
     yup.reach(loginSchema, inputName)
       .validate(inputValue)
       .then(() => {
         setFormErrors({
           ...formErrors,
-          [inputName]: ""
+          [inputName]: false
         })
-        if (formValues.username && formValues.password) {
-          setSubmitDisabled(false)
-        }
       })
       .catch(err => {
         setFormErrors({
           ...formErrors,
-          [inputName]: err.errors[0]
+          [inputName]: true
         })
         setSubmitDisabled(true)
       })
   }
 
+  useEffect(() => {
+    loginSchema.isValid(formValues).then(valid => setSubmitDisabled(!valid))
+  }, [formValues])
+
   return (
     <form handleSubmit={handleSubmit}>
       <label>
-        Username
+        {formErrors.username && <span classname="required">* </span>}Username
         <input
           name="username"
           type="text"
@@ -75,10 +77,8 @@ function LoginForm() {
         />
       </label>
 
-      {formErrors.username && <p>{formErrors.username}</p>}
-
       <label>
-        Password
+        {formErrors.password && <span classname="required">* </span>}Password
         <input
           name="password"
           type="password"
@@ -86,8 +86,6 @@ function LoginForm() {
           onChange={handleChange}
         />
       </label>
-
-      {formErrors.password && <p>{formErrors.password}</p>}
 
       <button disabled={submitDisabled}>Log In</button>
 

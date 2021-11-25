@@ -3,10 +3,10 @@ import * as yup from 'yup';
 const loginSchema = yup.object().shape({
   username: yup
     .string()
-    .required('Username Required'),
+    .required(),
   password: yup
     .string()
-    .required('Password Required')
+    .required()
 });
 
 export default loginSchema;
