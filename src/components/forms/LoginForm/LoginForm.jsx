@@ -66,9 +66,9 @@ function LoginForm() {
   }, [formValues])
 
   return (
-    <form handleSubmit={handleSubmit}>
+    <form className="form" handleSubmit={handleSubmit}>
       <label>
-        {formErrors.username && <span classname="required">* </span>}Username
+        <span className="required">*</span>Username
         <input
           name="username"
           type="text"
@@ -78,7 +78,7 @@ function LoginForm() {
       </label>
 
       <label>
-        {formErrors.password && <span classname="required">* </span>}Password
+        <span className="required">*</span>Password
         <input
           name="password"
           type="password"

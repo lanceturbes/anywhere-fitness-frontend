@@ -1,0 +1,5 @@
+html {
+  background-color: var(--dark-grey);
+  color: var(--bone-white);
+  font-family: 'Roboto', sans-serif;
+}

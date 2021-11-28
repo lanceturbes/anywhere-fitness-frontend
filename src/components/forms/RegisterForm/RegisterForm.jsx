@@ -67,7 +67,7 @@ function RegisterForm() {
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        {formErrors.first_name && <span classname="required">* </span>}First Name
+        <span className="required">*</span>First Name
         <input
           value={formValues.first_name}
           name="first_name"
@@ -77,7 +77,7 @@ function RegisterForm() {
       </label>
 
       <label>
-        {formErrors.last_name && <span classname="required">* </span>}Last Name
+        <span className="required">*</span>Last Name
         <input
           value={formValues.last_name}
           name="last_name"
@@ -87,7 +87,7 @@ function RegisterForm() {
       </label>
 
       <label>
-        {formErrors.username && <span classname="required">* </span>}Username
+        <span className="required">*</span>Username
         <input
           value={formValues.username}
           name="username"
@@ -97,7 +97,7 @@ function RegisterForm() {
       </label>
 
       <label>
-        {formErrors.email && <span classname="required">* </span>}Email
+        <span className="required">*</span>Email
         <input
           value={formValues.email}
           name="email"
@@ -107,7 +107,7 @@ function RegisterForm() {
       </label>
 
       <label>
-        {formErrors.password && <span classname="required">* </span>}Password
+        <span className="required">*</span>Password
         <input
           value={formValues.password}
           name="password"
