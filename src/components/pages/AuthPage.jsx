@@ -6,23 +6,25 @@ import { Routes, Route, NavLink } from "react-router-dom"
 import LoginForm from "../forms/LoginForm/LoginForm"
 import RegisterForm from "../forms/RegisterForm/RegisterForm"
 
-function LoginPage() {
+function AuthPage() {
   return (
     <section className="auth-page">
       <div className="auth-box">
         <nav className="auth-nav">
-          <NavLink
-            className={({ isActive }) => "auth-navlink login-button" + (isActive ? " active-auth-navlink" : "")}
-            to="/auth/login"
-          >
-            Log In
-          </NavLink>
-          <NavLink
-            className={({ isActive }) => "auth-navlink register-button" + (isActive ? " active-auth-navlink" : "")}
-            to="/auth/register"
-          >
-            Register
-          </NavLink>
+          <div className="auth-navlink-wrapper">
+            <NavLink
+              className={({ isActive }) => "auth-navlink" + (isActive ? " active-auth-navlink" : "")}
+              to="/auth/login"
+            >
+              Log In
+            </NavLink>
+            <NavLink
+              className={({ isActive }) => "auth-navlink" + (isActive ? " active-auth-navlink" : "")}
+              to="/auth/register"
+            >
+              Register
+            </NavLink>
+          </div>
         </nav>
         <Routes>
           <Route path="login" element={<LoginForm />} />
@@ -33,4 +35,4 @@ function LoginPage() {
   )
 }
 
-export default LoginPage
+export default AuthPage

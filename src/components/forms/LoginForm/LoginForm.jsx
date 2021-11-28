@@ -87,7 +87,16 @@ function LoginForm() {
         />
       </label>
 
-      <button disabled={submitDisabled}>Log In</button>
+      <button
+        className={
+          submitDisabled === false
+            ? "button activated-submit-button"
+            : "button"
+        }
+        disabled={submitDisabled}
+      >
+        Log In
+      </button>
 
       {loginError && <h4>{loginError}</h4>}
     </form>

@@ -2,8 +2,8 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 body {
-  background-color: var(--dark-grey);
-  color: var(--bone-white);
+  background-color: var(--bone-white);
+  color: var(--dark-grey);
 }
 #root {
   min-height: 99vh;
