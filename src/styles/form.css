@@ -3,18 +3,41 @@
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background-color: var(--bone-white);
-  border: none;
+  border: 1px solid var(--light-grey);
   border-radius: 0.5rem;
-  box-shadow: 0rem 0rem 4px 0.1px var(--dark-grey);
 }
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  min-height: 40vh;
+}
+.form-label {
+  display: flex;
+  width: 75%;
+  justify-content: space-evenly;
+}
+.form-label-text {
+  width: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .required {
   color: var(--tomato-red);
+  margin-right: 0.2rem;
+}
+.form-input {
+  border: 1px solid var(--light-grey);
+  background-color: var(--bone-white);
+  padding: 0.5rem;
+  transition: all 0.1s;
+}
+.form-input:focus {
+  padding: 0.7rem;
+  border: 1px solid var(--grey);
+  outline: none;
 }
 .activated-submit-button {
   transition: all 0.1s;

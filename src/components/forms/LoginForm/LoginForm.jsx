@@ -67,20 +67,28 @@ function LoginForm() {
 
   return (
     <form className="form" handleSubmit={handleSubmit}>
-      <label>
-        <span className="required">*</span>Username
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Username</span>
+        </div>
         <input
           name="username"
+          className="form-input"
           type="text"
           value={formValues.username}
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        <span className="required">*</span>Password
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Password</span>
+        </div>
         <input
           name="password"
+          className="form-input"
           type="password"
           value={formValues.password}
           onChange={handleChange}
