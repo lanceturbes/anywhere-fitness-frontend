@@ -1,5 +1,18 @@
 html {
+  font-family: 'Roboto', sans-serif;
+}
+body {
   background-color: var(--dark-grey);
   color: var(--bone-white);
-  font-family: 'Roboto', sans-serif;
+}
+#root {
+  min-height: 99vh;
+  min-width: 99vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+* {
+  border: 1px solid red;
+  margin: 0;
 }

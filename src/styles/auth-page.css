@@ -1,14 +1,19 @@
 /* ========== LoginPage Styling ========== */
 .auth-page {
-  max-width: 40%;
-  margin: 0 auto;
+  min-height: 100%;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+}
+.auth-box {
+  display: flex;
+  flex-direction: column;
 }
 .auth-nav {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 0 0 0.4rem 1px var(--dark-grey); */
 }
 .auth-navlink {
   text-decoration: none;
@@ -42,7 +47,7 @@
   align-items: center;
   justify-content: center;
 }
+/* ========== LoginForm Styling ========== */
 .required {
   color: red;
 }
-/* ========== LoginForm Styling ========== */

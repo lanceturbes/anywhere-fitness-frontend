@@ -8,6 +8,7 @@ import HomePage from "./components/pages/HomePage"
 import Navbar from "./components/elements/Navbar"
 import LoginPage from "./components/pages/LoginPage"
 import Logout from './components/elements/Logout'
+import Footer from "./components/elements/Footer"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/dashboard" element={<UserPage />} />
         <Route path="/logout" element={<Logout />} />
       </Routes>
+      <Footer />
     </>
   )
 }
