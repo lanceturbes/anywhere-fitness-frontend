@@ -66,28 +66,45 @@ function LoginForm() {
   }, [formValues])
 
   return (
-    <form handleSubmit={handleSubmit}>
-      <label>
-        {formErrors.username && <span classname="required">* </span>}Username
+    <form className="form" handleSubmit={handleSubmit}>
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Username</span>
+        </div>
         <input
           name="username"
+          className="form-input"
           type="text"
           value={formValues.username}
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        {formErrors.password && <span classname="required">* </span>}Password
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Password</span>
+        </div>
         <input
           name="password"
+          className="form-input"
           type="password"
           value={formValues.password}
           onChange={handleChange}
         />
       </label>
 
-      <button disabled={submitDisabled}>Log In</button>
+      <button
+        className={
+          submitDisabled === false
+            ? "button activated-submit-button"
+            : "button"
+        }
+        disabled={submitDisabled}
+      >
+        Log In
+      </button>
 
       {loginError && <h4>{loginError}</h4>}
     </form>

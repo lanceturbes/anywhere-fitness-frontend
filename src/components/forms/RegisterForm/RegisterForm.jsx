@@ -11,7 +11,7 @@ import { API_URL } from '../../../config'
 
 function RegisterForm() {
   const [formValues, setFormValues] = useState(initialValues)
-  const [disabled, setDisabled] = useState(true)
+  const [submitDisabled, setSubmitDisabled] = useState(true)
   const [formErrors, setFormErrors] = useState(initialValues)
 
   // Event Handlers
@@ -61,65 +61,88 @@ function RegisterForm() {
   }
 
   useEffect(() => {
-    registerSchema.isValid(formValues).then(valid => setDisabled(!valid))
+    registerSchema.isValid(formValues).then(valid => setSubmitDisabled(!valid))
   }, [formValues])
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        {formErrors.first_name && <span classname="required">* </span>}First Name
+    <form className="form" onSubmit={handleSubmit}>
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>First Name</span>
+        </div>
         <input
           value={formValues.first_name}
+          className="form-input"
           name="first_name"
           type="text"
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        {formErrors.last_name && <span classname="required">* </span>}Last Name
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Last Name</span>
+        </div>
         <input
           value={formValues.last_name}
+          className="form-input"
           name="last_name"
           type="text"
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        {formErrors.username && <span classname="required">* </span>}Username
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Username</span>
+        </div>
         <input
           value={formValues.username}
+          className="form-input"
           name="username"
           type="text"
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        {formErrors.email && <span classname="required">* </span>}Email
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Email</span>
+        </div>
         <input
           value={formValues.email}
+          className="form-input"
           name="email"
           type="email"
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        {formErrors.password && <span classname="required">* </span>}Password
+      <label className="form-label">
+        <div className="form-label-text">
+          <span className="required">*</span>
+          <span>Password</span>
+        </div>
         <input
           value={formValues.password}
+          className="form-input"
           name="password"
           type="password"
           onChange={handleChange}
         />
       </label>
 
-      <label>
-        Instructor Code
+      <label className="form-label">
+        <div className="form-label-text">
+          <span>Instructor Code</span>
+        </div>
         <input
           value={formValues.instructorCode}
+          className="form-input"
           name="instructorCode"
           type="text"
           onChange={handleChange}
@@ -127,7 +150,16 @@ function RegisterForm() {
       </label>
 
       <Link to={`/dashboard`}>
-        <button disabled={disabled}>Sign Up</button>
+        <button
+          className={
+            submitDisabled === false
+              ? "button activated-submit-button"
+              : "button"
+          }
+          disabled={submitDisabled}
+        >
+          Register
+        </button>
       </Link>
 
     </form>

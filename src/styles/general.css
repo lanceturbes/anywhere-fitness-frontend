@@ -1,0 +1,18 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-color: var(--bone-white);
+  color: var(--dark-grey);
+}
+#root {
+  min-height: 99vh;
+  min-width: 99vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+* {
+  border: 1px solid red;
+  margin: 0;
+}
